@@ -1,6 +1,6 @@
 import java.util.*
 
-class Product(
+data class Product(
     val id: String = UUID.randomUUID().toString(),
     val price: Double
 )
