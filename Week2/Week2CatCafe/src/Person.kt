@@ -1,22 +1,19 @@
-open class Person (
-    var name:String,
-    var lastName: String,
-    var phone: String,
-    var email: String) {
+import java.util.*
 
-    private companion object {
-         var personID = 0
-         fun generateID(): Int {
-            personID += 1
-            return personID
-        }
-    }
+open class Person(val name:String, val lastName: String, val phone: String, val email: String) {
 
-    val id: Int
-
-    init {
-        this.id = generateID()
-    }
+    val id: String = UUID.randomUUID().toString()
+//    val name:String
+//    val lastName: String
+//    val phone: String
+//    val email: String
+//
+//    constructor(name:String, lastName: String, phone: String, email: String) {
+//        this.name = name
+//        this.lastName = lastName
+//        this.phone = phone
+//        this.email = email
+//    }
 
     fun fullName(): String {
         return "$name $lastName"

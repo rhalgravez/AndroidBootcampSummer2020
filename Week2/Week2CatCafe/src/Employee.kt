@@ -1,7 +1,6 @@
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-
 class Employee(
     name: String,
     lastName: String,
@@ -10,16 +9,20 @@ class Employee(
     val socialSecurityNumber: String,
     var hireDate: String,
     var salary: Double
-) :
-    Person(name, lastName, phone, email) {
+) : Person(name, lastName, phone, email) {
 
     constructor(
         person: Person,
         socialSecurityNumber: String,
         hireDate: String,
-        salary: Double
-    ) :
-            this(person.name, person.lastName, person.phone, person.email, socialSecurityNumber, hireDate, salary)
+        salary: Double):
+            this(person.name,
+                person.lastName,
+                person.phone,
+                person.email,
+                socialSecurityNumber,
+                hireDate,
+                salary)
 
     fun clockIn() {
         val stringDate = stringLocalDateTime()
