@@ -1,4 +1,8 @@
-data class Person (var name:String, var lastName: String, var phone: String, var email: String) {
+open class Person (
+    var name:String,
+    var lastName: String,
+    var phone: String,
+    var email: String) {
 
     private companion object {
          var personID = 0
@@ -12,6 +16,10 @@ data class Person (var name:String, var lastName: String, var phone: String, var
 
     init {
         this.id = generateID()
+    }
+
+    fun fullName(): String {
+        return "$name $lastName"
     }
 
 }
