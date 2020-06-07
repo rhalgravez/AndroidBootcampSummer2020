@@ -7,7 +7,7 @@ data class Shelter(
 
     val id: String = java.util.UUID.randomUUID().toString()
 
-    private val cats: MutableSet<Cat> = mutableSetOf()
+    private var cats: MutableSet<Cat> = mutableSetOf()
 
     private val catsAdopted: MutableSet<Cat> = mutableSetOf()
 
@@ -42,5 +42,18 @@ data class Shelter(
         val list            = cats.toMutableList()
         val descendingList  = list.sortedByDescending { it.sponsorships.size }
         return descendingList.take(10)
+    }
+
+    fun adoptCat(cat: Cat): Cat? {
+        val catList = cats.toMutableList()
+        val filterList = catList.filter { it.id == cat.id }
+        if (filterList.size == 1) {
+            val catWithNewHome = filterList.first()
+            catsAdopted.add(catWithNewHome)
+            catList.remove(catWithNewHome)
+            cats = catList.toMutableSet()
+            return  catWithNewHome
+        }
+        return null
     }
 }
