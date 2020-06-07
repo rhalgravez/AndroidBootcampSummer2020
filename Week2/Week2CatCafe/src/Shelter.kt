@@ -34,7 +34,13 @@ data class Shelter(
     }
 
     fun sponsoredCats(): Set<Cat> {
-        val sponsored = cats.filter { it.sponsorships.size != 0 }
+        val sponsored = cats.filterNot { it.sponsorships.size == 0 }
         return sponsored.toSet()
+    }
+
+    fun topTenPopularCats(): List<Cat> {
+        val list            = cats.toMutableList()
+        val descendingList  = list.sortedByDescending { it.sponsorships.size }
+        return descendingList.take(10)
     }
 }

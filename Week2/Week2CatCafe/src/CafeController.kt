@@ -43,7 +43,7 @@ class CafeController {
         createPersonsAndEmployees()
         createSheltersAndCats()
         createProducts()
-
+        sponsorCats()
 
     }
 
@@ -92,8 +92,8 @@ class CafeController {
         wilyKat     = Cat("WilyKat", "Wildcat", "m")
         snarf       = Cat("Snarf", "Snarf", "m")
 
-        petFinder.takeCareOf(listOf(garfield, tom, sylvester, pinkPanther))
-        catsLair.takeCareOf(listOf(lionO, panthro, tygra, cheetara, wilyKit, wilyKat, snarf))
+//        petFinder.takeCareOf(listOf(garfield, tom, sylvester, pinkPanther))
+        catsLair.takeCareOf(listOf(lionO, panthro, tygra, cheetara, wilyKit, wilyKat, snarf, garfield, tom, sylvester, pinkPanther))
     }
 
     private fun createProducts() {
@@ -104,5 +104,13 @@ class CafeController {
         plainBagel          = Product("Plain Bagel", 2.00)
         butterCroissant     = Product("Butter Croissant", 2.00)
         water               = Product("Water", 5.50)
+    }
+
+    private fun sponsorCats() {
+        snarf.sponsorships.add(roberto)
+        snarf.sponsorships.add(manuel)
+        snarf.sponsorships.add(mariela)
+        snarf.sponsorships.add(erika)
+        panthro.sponsorships.add(roberto)
     }
 }
