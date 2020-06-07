@@ -15,8 +15,8 @@ class CafeController {
     private lateinit var barista:   Employee
     private lateinit var server:    Employee
 
-    private lateinit var petFinder: Shelter
-    private lateinit var catsLair:  Shelter
+     lateinit var petFinder: Shelter
+     lateinit var catsLair:  Shelter
 
     private lateinit var garfield:      Cat
     private lateinit var tom:           Cat
@@ -29,6 +29,7 @@ class CafeController {
     private lateinit var cheetara:  Cat
     private lateinit var wilyKit:   Cat
     private lateinit var wilyKat:   Cat
+    private lateinit var snarf:   Cat
 
     private lateinit var cafeAmericano:     Product
     private lateinit var cafeLatte:         Product
@@ -78,17 +79,21 @@ class CafeController {
         catsLair    = Shelter("Cats Lair", "742 Evergreen Terrace", "654-852-9630")
 
 
-        garfield    = Cat("Garfield", "Exotic Shorthair", "m", petFinder.id)
-        tom         = Cat("Tom", "Tuxedo cat", "m", petFinder.id)
-        sylvester   = Cat("Sylvester","Tuxedo cat", "m", petFinder.id )
-        pinkPanther = Cat("The Pink Panther", "Panther...pink", "m", petFinder.id)
+        garfield    = Cat("Garfield", "Exotic Shorthair", "m")
+        tom         = Cat("Tom", "Tuxedo cat", "m")
+        sylvester   = Cat("Sylvester","Tuxedo cat", "m")
+        pinkPanther = Cat("The Pink Panther", "Panther...pink", "m")
 
-        lionO       = Cat("Lion-O", "lion", "m", catsLair.id)
-        panthro     = Cat("Panthro", "Panther", "m", catsLair.id)
-        tygra       = Cat("Tygra", "tiger", "f", catsLair.id)
-        cheetara    = Cat("Cheetara", "Cheetah", "m", catsLair.id)
-        wilyKit     = Cat("WilyKit", "Wildcat", "f", catsLair.id)
-        wilyKat     = Cat("WilyKat", "Wildcat", "m", catsLair.id)
+        lionO       = Cat("Lion-O", "lion", "m")
+        panthro     = Cat("Panthro", "Panther", "m")
+        tygra       = Cat("Tygra", "tiger", "f")
+        cheetara    = Cat("Cheetara", "Cheetah", "m")
+        wilyKit     = Cat("WilyKit", "Wildcat", "f")
+        wilyKat     = Cat("WilyKat", "Wildcat", "m")
+        snarf       = Cat("Snarf", "Snarf", "m")
+
+        petFinder.takeCareOf(listOf(garfield, tom, sylvester, pinkPanther))
+        catsLair.takeCareOf(listOf(lionO, panthro, tygra, cheetara, wilyKit, wilyKat, snarf))
     }
 
     private fun createProducts() {
