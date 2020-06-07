@@ -1,38 +1,47 @@
 class CafeController {
 
-    private lateinit var roberto: Person
-    private lateinit var karen: Person
-    private lateinit var manuel: Person
-    private lateinit var carol: Person
-    private lateinit var daniel: Person
-    private lateinit var monica: Person
-    private lateinit var arturo: Person
-    private lateinit var mariela: Person
-    private lateinit var andres: Person
-    private lateinit var erika: Person
+    private lateinit var roberto:   Person
+    private lateinit var karen:     Person
+    private lateinit var manuel:    Person
+    private lateinit var carol:     Person
+    private lateinit var daniel:    Person
+    private lateinit var monica:    Person
+    private lateinit var arturo:    Person
+    private lateinit var mariela:   Person
+    private lateinit var andres:    Person
+    private lateinit var erika:     Person
 
-    private lateinit var cashier: Employee
-    private lateinit var barista: Employee
-    private lateinit var server: Employee
+    private lateinit var cashier:   Employee
+    private lateinit var barista:   Employee
+    private lateinit var server:    Employee
 
     private lateinit var petFinder: Shelter
-    private lateinit var catsLair: Shelter
+    private lateinit var catsLair:  Shelter
 
-    private lateinit var garfield: Cat
-    private lateinit var tom: Cat
-    private lateinit var sylvester: Cat
-    private lateinit var pinkPanther: Cat
+    private lateinit var garfield:      Cat
+    private lateinit var tom:           Cat
+    private lateinit var sylvester:     Cat
+    private lateinit var pinkPanther:   Cat
 
-    private lateinit var lionO: Cat
-    private lateinit var panthro: Cat
-    private lateinit var tygra: Cat
-    private lateinit var cheetara: Cat
-    private lateinit var wilyKit: Cat
-    private lateinit var wilyKat: Cat
+    private lateinit var lionO:     Cat
+    private lateinit var panthro:   Cat
+    private lateinit var tygra:     Cat
+    private lateinit var cheetara:  Cat
+    private lateinit var wilyKit:   Cat
+    private lateinit var wilyKat:   Cat
+
+    private lateinit var cafeAmericano:     Product
+    private lateinit var cafeLatte:         Product
+    private lateinit var expressoMachiato:  Product
+    private lateinit var blondeRoast:       Product
+    private lateinit var plainBagel:        Product
+    private lateinit var butterCroissant:   Product
+    private lateinit var water:             Product
 
     init {
         createPersonsAndEmployees()
         createSheltersAndCats()
+        createProducts()
 
 
     }
@@ -80,5 +89,15 @@ class CafeController {
         cheetara    = Cat("Cheetara", "Cheetah", "m", catsLair.id)
         wilyKit     = Cat("WilyKit", "Wildcat", "f", catsLair.id)
         wilyKat     = Cat("WilyKat", "Wildcat", "m", catsLair.id)
+    }
+
+    private fun createProducts() {
+        cafeAmericano       = Product("Cafe Americano", 7.0)
+        cafeLatte           = Product("Cafe Latte", 5.50)
+        expressoMachiato    = Product("Espresso Macchiato", 7.50)
+        blondeRoast         = Product("Blonde Roast", 8.00)
+        plainBagel          = Product("Plain Bagel", 2.00)
+        butterCroissant     = Product("Butter Croissant", 2.00)
+        water               = Product("Water", 5.50)
     }
 }
