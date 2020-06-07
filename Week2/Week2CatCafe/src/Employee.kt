@@ -15,14 +15,17 @@ class Employee(
         person: Person,
         socialSecurityNumber: String,
         hireDate: String,
-        salary: Double):
-            this(person.name,
+        salary: Double
+    ) :
+            this(
+                person.name,
                 person.lastName,
                 person.phone,
                 person.email,
                 socialSecurityNumber,
                 hireDate,
-                salary)
+                salary
+            )
 
     fun clockIn() {
         val stringDate = stringLocalDateTime()
@@ -37,6 +40,11 @@ class Employee(
         } else {
             println("Sorry but ${fullName()} still have work to do")
         }
+    }
+
+    override fun toString(): String {
+        return "${this.javaClass.name}(id=$id, name=$name, lastName=$lastName, phone=$phone, email=$email, " +
+                "socialSecurityNumber= $socialSecurityNumber, hireDate=$hireDate, salary=$salary)"
     }
 
     private fun stringLocalDateTime(): String {
