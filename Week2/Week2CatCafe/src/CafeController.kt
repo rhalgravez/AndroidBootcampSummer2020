@@ -106,6 +106,14 @@ class CafeController {
         }
     }
 
+    fun printTotalCustomers() {
+        val customerSet = mutableSetOf<Person>()
+        for (transaction in transactionsList) {
+            customerSet.add(transaction.customer)
+        }
+        println("The number of customers today was: ${customerSet.size}")
+    }
+
     private fun createPersonsAndEmployees() {
         roberto = Person("Roberto", "Halgravez", "662-122-3812",
                         "r.halgravez@gmail.com")

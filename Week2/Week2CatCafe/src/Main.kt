@@ -14,6 +14,7 @@ fun main() {
 
     cafeController.doSomeTransactions()
     println()
+    cafeController.printTotalCustomers()
     println("**************")
     cafeController.printTopTenCats()
 
