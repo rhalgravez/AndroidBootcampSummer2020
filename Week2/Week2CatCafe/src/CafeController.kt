@@ -69,6 +69,30 @@ class CafeController {
         return true
     }
 
+    fun transaction(items: List<Pair<String, Int>>, customer:Person, cats: List<Cat>): Receipt {
+        val itemsSold = mutableSetOf<Pair<Product,Int>>()
+
+        for ((item, quantity) in items) {
+            if (sale(item, quantity)) {
+                val product = productsList.find { it.name == item }!!
+                itemsSold.add(Pair(product, quantity))
+            }
+        }
+
+        return Receipt(customer, itemsSold, cats)
+    }
+
+    fun doSomeTransactions() {
+        val receipt1 = transaction(listOf(Pair("Cafe Americano", 3), Pair("Water", 1)), roberto, listOf())
+        val receipt2 = transaction(listOf(Pair("Espresso Macchiato", 1)), karen, listOf(wilyKat))
+        val receipt3 = transaction(listOf(Pair("Water", 1)), andres, listOf())
+        transactions.add(receipt1)
+//        receipt1.printTicket()
+        transactions.add(receipt2)
+        receipt3.printTicket()
+        transactions.add(receipt3)
+    }
+
     fun findProductId(name: String): String {
         return productsList.find { it.name == name }?.id ?: ""
     }
