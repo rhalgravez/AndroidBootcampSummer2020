@@ -30,10 +30,7 @@ data class Receipt(
             for ((item, quantity) in items) {
                 sum += item.price * quantity
             }
-            println("CAtsSice: ${catsAdopted.size > 0}")
-            println("IEmployee: ${customer is Employee}")
-            if ((catsAdopted.size > 0) && (customer is Employee)) {
-                println("Si aplica descuento")
+            if ((catsAdopted.size > 0) && (customer is Employee)) { // NOTE: The type casting is not working
                 return sum - (sum * discount)
             }
             return sum
