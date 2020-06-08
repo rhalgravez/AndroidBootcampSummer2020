@@ -68,7 +68,7 @@ data class Receipt(
         }
 
     fun printTicket() {
-        println("*****Cat Cafe********************************************")
+        println("********************Cat Cafe*****************************")
         println("* Receipt Id: $id")
         println("* Client Name: ${customer.fullName()}")
         println("* Client email: ${customer.email}")
@@ -87,10 +87,8 @@ data class Receipt(
             println("* Cats:")
             for (description in catDescriptionList) {
                 println("$description")
-                println("*")
             }
-        } else {
-            println("*********************************************************")
         }
+        println("*********************************************************")
     }
 }
