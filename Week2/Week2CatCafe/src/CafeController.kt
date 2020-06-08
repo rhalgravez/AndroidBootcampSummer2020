@@ -46,7 +46,7 @@ class CafeController {
     private var productsOnSale  = mutableMapOf<String, Product>()
     private var productsSold    = mutableMapOf<String, Int>()
 
-    private var transactions = mutableListOf<Receipt>()
+    var transactionsList = mutableListOf<Receipt>()
 
     init {
         createPersonsAndEmployees()
@@ -57,13 +57,15 @@ class CafeController {
 
     fun doSomeTransactions() {
         val receipt1 = transaction(listOf(Pair("Cafe Americano", 3), Pair("Water", 1)), roberto, listOf())
-        val receipt2 = transaction(listOf(Pair("Espresso Macchiato", 1)), karen, listOf(wilyKat))
+        val receipt2 = transaction(listOf(Pair("Espresso Macchiato", 1)), karen, listOf(wilyKat, wilyKit))
         val receipt3 = transaction(listOf(Pair("Water", 1)), andres, listOf())
-        transactions.add(receipt1)
-//        receipt1.printTicket()
-        transactions.add(receipt2)
-        receipt3.printTicket()
-        transactions.add(receipt3)
+        val receipt4 = transaction(listOf(Pair("Butter Croissant", 2)), manuel, listOf(snarf))
+        val receipt5 = transaction(listOf(Pair("Butter Croissant", 1), Pair("Cafe Americano", 1)), arturo, listOf(snarf))
+        transactionsList.add(receipt1)
+        transactionsList.add(receipt2)
+        transactionsList.add(receipt3)
+        transactionsList.add(receipt4)
+        transactionsList.add(receipt5)
     }
 
 
@@ -99,7 +101,7 @@ class CafeController {
         for (shelter in shelterList) {
             println("Shelter: ${shelter.name}")
             for (cat in shelter.topTenPopularCats()) {
-                println("${cat.name}")
+                println(cat.name)
             }
         }
     }
@@ -230,6 +232,15 @@ class CafeController {
         return productsList.find { it.name == name }?.id ?: ""
     }
 
+    private fun adoptCats(cats: List<Cat>) {
+        for (cat in cats) {
+            var shelter = shelterList.find { it.id == cat.shelterID }
+            if (shelter != null) {
+                shelter.adoptCat(cat)
+            }
+        }
+    }
+
     private fun transaction(items: List<Pair<String, Int>>, customer:Person, cats: List<Cat>): Receipt {
         val itemsSold = mutableSetOf<Pair<Product,Int>>()
 
@@ -239,14 +250,14 @@ class CafeController {
                 itemsSold.add(Pair(product, quantity))
             }
         }
-
+        adoptCats(cats)
         return Receipt(customer, itemsSold, cats)
     }
 
     private fun sale(item: String, quantity: Int): Boolean {
         val product = productsOnSale[findProductId(item)] ?: return false
 
-        var inventory = product.quantity
+        val inventory = product.quantity
 
         if ((inventory - quantity) < 0 ) {
             return false
