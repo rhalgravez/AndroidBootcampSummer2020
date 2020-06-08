@@ -39,12 +39,38 @@ class CafeController {
     private lateinit var butterCroissant:   Product
     private lateinit var water:             Product
 
+    private lateinit var productsList: List<Product>
+
+     var productsOnSale  = mutableMapOf<String, Product>()
+     var productsSold    = mutableMapOf<String, Int>()
+
     init {
         createPersonsAndEmployees()
         createSheltersAndCats()
         createProducts()
         sponsorCats()
 
+    }
+
+    fun sale(item: String, quantity: Int): Boolean {
+        val product = productsOnSale[findProductId(item)] ?: return false
+
+        var inventory = product.quantity
+
+        if ((inventory - quantity) < 0 ) {
+            return false
+        }
+        var sales = productsSold[product.id] ?: return false
+        sales += quantity
+        productsSold[product.id] =  sales
+
+        product.quantity -= quantity
+        productsOnSale[product.id] = product
+        return true
+    }
+
+    fun findProductId(name: String): String {
+        return productsList.find { it.name == name }?.id ?: ""
     }
 
     private fun createPersonsAndEmployees() {
@@ -92,18 +118,38 @@ class CafeController {
         wilyKat     = Cat("WilyKat", "Wildcat", "m")
         snarf       = Cat("Snarf", "Snarf", "m")
 
-//        petFinder.takeCareOf(listOf(garfield, tom, sylvester, pinkPanther))
+        petFinder.takeCareOf(listOf(garfield, tom, sylvester, pinkPanther))
         catsLair.takeCareOf(listOf(lionO, panthro, tygra, cheetara, wilyKit, wilyKat, snarf, garfield, tom, sylvester, pinkPanther))
     }
 
     private fun createProducts() {
-        cafeAmericano       = Product("Cafe Americano", 7.0)
-        cafeLatte           = Product("Cafe Latte", 5.50)
-        expressoMachiato    = Product("Espresso Macchiato", 7.50)
-        blondeRoast         = Product("Blonde Roast", 8.00)
-        plainBagel          = Product("Plain Bagel", 2.00)
-        butterCroissant     = Product("Butter Croissant", 2.00)
-        water               = Product("Water", 5.50)
+        cafeAmericano       = Product("Cafe Americano", 7.0, 25)
+        cafeLatte           = Product("Cafe Latte", 5.50, 25)
+        expressoMachiato    = Product("Espresso Macchiato", 7.50, 23)
+        blondeRoast         = Product("Blonde Roast", 8.00, 20)
+        plainBagel          = Product("Plain Bagel", 2.00, 15)
+        butterCroissant     = Product("Butter Croissant", 2.00, 20)
+        water               = Product("Water", 5.50, 17)
+
+        productsList = listOf(cafeAmericano.copy(), cafeLatte.copy(), expressoMachiato.copy(),
+            blondeRoast.copy(), plainBagel.copy(), butterCroissant.copy(), water.copy()
+        )
+
+        productsSold[cafeAmericano.id]      = 0
+        productsSold[cafeLatte.id]          = 0
+        productsSold[expressoMachiato.id]   = 0
+        productsSold[blondeRoast.id]        = 0
+        productsSold[plainBagel.id]         = 0
+        productsSold[butterCroissant.id]    = 0
+        productsSold[water.id]              = 0
+
+        productsOnSale[cafeAmericano.id]    = cafeAmericano
+        productsOnSale[cafeLatte.id]        = cafeLatte
+        productsOnSale[expressoMachiato.id] = expressoMachiato
+        productsOnSale[blondeRoast.id]      = blondeRoast
+        productsOnSale[plainBagel.id]       = plainBagel
+        productsOnSale[butterCroissant.id]  = butterCroissant
+        productsOnSale[water.id]            = water
     }
 
     private fun sponsorCats() {
@@ -112,5 +158,16 @@ class CafeController {
         snarf.sponsorships.add(mariela)
         snarf.sponsorships.add(erika)
         panthro.sponsorships.add(roberto)
+    }
+
+    fun topTenProducts(): List<Triple<Product, Int, Double>> {
+        val reverseOrder = productsSold.toList().sortedBy { (_, value) -> value}.reversed()
+        val descendngList = mutableListOf<Triple<Product, Int, Double>>()
+        for ((id, quantity) in reverseOrder) {
+            val product = productsOnSale.getValue(id)
+            val grossSale = product.price * quantity
+            descendngList.add(Triple(product, quantity, grossSale))
+        }
+        return descendngList.take(10)
     }
 }
