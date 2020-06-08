@@ -15,8 +15,10 @@ class CafeController {
     private lateinit var barista:   Employee
     private lateinit var server:    Employee
 
-     lateinit var petFinder: Shelter
-     lateinit var catsLair:  Shelter
+    private lateinit var petFinder: Shelter
+    private lateinit var catsLair:  Shelter
+
+    private lateinit var shelterList: MutableList<Shelter>
 
     private lateinit var garfield:      Cat
     private lateinit var tom:           Cat
@@ -29,7 +31,7 @@ class CafeController {
     private lateinit var cheetara:  Cat
     private lateinit var wilyKit:   Cat
     private lateinit var wilyKat:   Cat
-    private lateinit var snarf:   Cat
+    private lateinit var snarf:     Cat
 
     private lateinit var cafeAmericano:     Product
     private lateinit var cafeLatte:         Product
@@ -41,15 +43,16 @@ class CafeController {
 
     private lateinit var productsList: List<Product>
 
-     var productsOnSale  = mutableMapOf<String, Product>()
-     var productsSold    = mutableMapOf<String, Int>()
+    private var productsOnSale  = mutableMapOf<String, Product>()
+    private var productsSold    = mutableMapOf<String, Int>()
+
+    private var transactions = mutableListOf<Receipt>()
 
     init {
         createPersonsAndEmployees()
         createSheltersAndCats()
         createProducts()
         sponsorCats()
-
     }
 
     fun sale(item: String, quantity: Int): Boolean {
@@ -97,6 +100,42 @@ class CafeController {
         return productsList.find { it.name == name }?.id ?: ""
     }
 
+    fun printNumberOfAdoptions() {
+        println("Total number of adoptions:")
+        println("Shelter:${petFinder.name} adoptions: ${petFinder.numberOfAdoptions()}")
+        println("Shelter:${catsLair.name} adoptions: ${catsLair.numberOfAdoptions()}")
+    }
+
+    fun printUnsponsoredCats() {
+        println("Total of unsponsored cats:")
+        println("Shelter:${petFinder.name} unsponsored cats: ${petFinder.unsponsoredCats()}")
+        println("Shelter:${catsLair.name} unsponsored cats: ${catsLair.unsponsoredCats()}")
+    }
+
+    fun printSponsoredCats() {
+        println("Total of sponsored cats:")
+        println("Shelter:${petFinder.name} sponsored cats: ${petFinder.sponsoredCats()}")
+        println("Shelter:${catsLair.name} sponsored cats: ${catsLair.sponsoredCats()}")
+    }
+
+    fun printTopTenSellingItems() {
+        println("Top selling Items:")
+        val topTen = topTenProducts()
+        for ((product, _, quantity) in topTen) {
+            println("${product.name} has sold $quantity times")
+        }
+    }
+
+    fun printTopTenCats() {
+        println("Top sponsored cats")
+        for (shelter in shelterList) {
+            println("Shelter: ${shelter.name}")
+            for (cat in shelter.topTenPopularCats()) {
+                println("${cat.name}")
+            }
+        }
+    }
+
     private fun createPersonsAndEmployees() {
         roberto = Person("Roberto", "Halgravez", "662-122-3812",
                         "r.halgravez@gmail.com")
@@ -128,6 +167,7 @@ class CafeController {
         petFinder   = Shelter("Pet Finder", "P. Sherman, 42 Wallaby", "999-987-6321")
         catsLair    = Shelter("Cats Lair", "742 Evergreen Terrace", "654-852-9630")
 
+        shelterList = mutableListOf(petFinder, catsLair)
 
         garfield    = Cat("Garfield", "Exotic Shorthair", "m")
         tom         = Cat("Tom", "Tuxedo cat", "m")
@@ -177,14 +217,37 @@ class CafeController {
     }
 
     private fun sponsorCats() {
-        snarf.sponsorships.add(roberto)
-        snarf.sponsorships.add(manuel)
-        snarf.sponsorships.add(mariela)
-        snarf.sponsorships.add(erika)
+        garfield.sponsorships.add(karen)
+        tom.sponsorships.add(manuel)
+        pinkPanther.sponsorships.add(roberto)
+        pinkPanther.sponsorships.add(carol)
+        pinkPanther.sponsorships.add(monica)
+        pinkPanther.sponsorships.add(andres)
+
+        lionO.sponsorships.add(roberto)
+        lionO.sponsorships.add(daniel)
+        lionO.sponsorships.add(arturo)
+        lionO.sponsorships.add(erika)
         panthro.sponsorships.add(roberto)
+        panthro.sponsorships.add(arturo)
+        cheetara.sponsorships.add(roberto)
+        cheetara.sponsorships.add(mariela)
+        cheetara.sponsorships.add(andres)
+        wilyKat.sponsorships.add(karen)
+        wilyKit.sponsorships.add(karen)
+        snarf.sponsorships.add(roberto)
+        snarf.sponsorships.add(karen)
+        snarf.sponsorships.add(manuel)
+        snarf.sponsorships.add(carol)
+        snarf.sponsorships.add(daniel)
+        snarf.sponsorships.add(monica)
+        snarf.sponsorships.add(arturo)
+        snarf.sponsorships.add(mariela)
+        snarf.sponsorships.add(andres)
+        snarf.sponsorships.add(erika)
     }
 
-    fun topTenProducts(): List<Triple<Product, Int, Double>> {
+    private fun topTenProducts(): List<Triple<Product, Int, Double>> {
         val reverseOrder = productsSold.toList().sortedBy { (_, value) -> value}.reversed()
         val descendngList = mutableListOf<Triple<Product, Int, Double>>()
         for ((id, quantity) in reverseOrder) {
