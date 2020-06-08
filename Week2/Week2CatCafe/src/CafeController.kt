@@ -55,36 +55,6 @@ class CafeController {
         sponsorCats()
     }
 
-    fun sale(item: String, quantity: Int): Boolean {
-        val product = productsOnSale[findProductId(item)] ?: return false
-
-        var inventory = product.quantity
-
-        if ((inventory - quantity) < 0 ) {
-            return false
-        }
-        var sales = productsSold[product.id] ?: return false
-        sales += quantity
-        productsSold[product.id] =  sales
-
-        product.quantity -= quantity
-        productsOnSale[product.id] = product
-        return true
-    }
-
-    fun transaction(items: List<Pair<String, Int>>, customer:Person, cats: List<Cat>): Receipt {
-        val itemsSold = mutableSetOf<Pair<Product,Int>>()
-
-        for ((item, quantity) in items) {
-            if (sale(item, quantity)) {
-                val product = productsList.find { it.name == item }!!
-                itemsSold.add(Pair(product, quantity))
-            }
-        }
-
-        return Receipt(customer, itemsSold, cats)
-    }
-
     fun doSomeTransactions() {
         val receipt1 = transaction(listOf(Pair("Cafe Americano", 3), Pair("Water", 1)), roberto, listOf())
         val receipt2 = transaction(listOf(Pair("Espresso Macchiato", 1)), karen, listOf(wilyKat))
@@ -96,9 +66,7 @@ class CafeController {
         transactions.add(receipt3)
     }
 
-    fun findProductId(name: String): String {
-        return productsList.find { it.name == name }?.id ?: ""
-    }
+
 
     fun printNumberOfAdoptions() {
         println("Total number of adoptions:")
@@ -256,5 +224,39 @@ class CafeController {
             descendngList.add(Triple(product, quantity, grossSale))
         }
         return descendngList.take(10)
+    }
+
+    private fun findProductId(name: String): String {
+        return productsList.find { it.name == name }?.id ?: ""
+    }
+
+    private fun transaction(items: List<Pair<String, Int>>, customer:Person, cats: List<Cat>): Receipt {
+        val itemsSold = mutableSetOf<Pair<Product,Int>>()
+
+        for ((item, quantity) in items) {
+            if (sale(item, quantity)) {
+                val product = productsList.find { it.name == item }!!
+                itemsSold.add(Pair(product, quantity))
+            }
+        }
+
+        return Receipt(customer, itemsSold, cats)
+    }
+
+    private fun sale(item: String, quantity: Int): Boolean {
+        val product = productsOnSale[findProductId(item)] ?: return false
+
+        var inventory = product.quantity
+
+        if ((inventory - quantity) < 0 ) {
+            return false
+        }
+        var sales = productsSold[product.id] ?: return false
+        sales += quantity
+        productsSold[product.id] =  sales
+
+        product.quantity -= quantity
+        productsOnSale[product.id] = product
+        return true
     }
 }
