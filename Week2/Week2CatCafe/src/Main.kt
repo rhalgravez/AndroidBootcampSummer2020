@@ -14,10 +14,15 @@ fun main() {
 
     cafeController.doSomeTransactions()
     println()
+    println("----------")
     cafeController.printTotalCustomers()
-    println("**************")
+    println("----------")
+    cafeController.printTotalNumberOfTransactions()
+    println("----------")
     cafeController.printTopTenCats()
-
+    println()
+    println("Receipt example:")
+    println()
     val receipt = cafeController.transactionsList[1]
     receipt.printTicket()
 

@@ -61,11 +61,14 @@ class CafeController {
         val receipt3 = transaction(listOf(Pair("Water", 1)), andres, listOf())
         val receipt4 = transaction(listOf(Pair("Butter Croissant", 2)), manuel, listOf(snarf))
         val receipt5 = transaction(listOf(Pair("Butter Croissant", 1), Pair("Cafe Americano", 1)), arturo, listOf(snarf))
+        val receipt6 = transaction(listOf(Pair("Butter Croissant", 1)), roberto, listOf())
+
         transactionsList.add(receipt1)
         transactionsList.add(receipt2)
         transactionsList.add(receipt3)
         transactionsList.add(receipt4)
         transactionsList.add(receipt5)
+        transactionsList.add(receipt6)
     }
 
 
@@ -112,6 +115,10 @@ class CafeController {
             customerSet.add(transaction.customer)
         }
         println("The number of customers today was: ${customerSet.size}")
+    }
+
+    fun printTotalNumberOfTransactions() {
+        println("Total number of transactions was: ${transactionsList.size}")
     }
 
     private fun createPersonsAndEmployees() {
