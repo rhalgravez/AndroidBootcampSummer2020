@@ -11,6 +11,7 @@
         android:text="@string/personalName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="8dp"
         app:layout_constraintTop_toBottomOf="@id/horizontalGuideline"
         app:layout_constraintStart_toEndOf="@id/verticalGuideline"
         app:layout_constraintBottom_toTopOf="@id/mailImageView" />
@@ -19,11 +20,23 @@
         android:id="@+id/mailImageView"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        app:layout_constraintTop_toBottomOf="@id/nameTextView"
+        android:contentDescription="@string/mailImageDescription"
         app:layout_constraintBottom_toTopOf="@id/twitterImageView"
         app:layout_constraintEnd_toStartOf="@id/verticalGuideline"
-        app:srcCompat="@drawable/mail"
-        android:contentDescription="@string/mailImageDescription"/>
+        app:layout_constraintTop_toBottomOf="@id/nameTextView"
+        app:srcCompat="@drawable/mail" />
+
+    <TextView
+        android:id="@+id/mailTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="@string/personalEmail"
+        app:layout_constraintBottom_toBottomOf="@id/mailImageView"
+        app:layout_constraintStart_toEndOf="@id/mailImageView"
+        app:layout_constraintTop_toTopOf="@id/mailImageView" />
+
+
 
     <ImageView
         android:id="@+id/twitterImageView"

@@ -7,4 +7,5 @@
     <string name="twitterImageDescription">Twitter</string>
     <string name="gitHubImageDescription">GitHub</string>
     <string name="personalName">Roberto Halgravez</string>
+    <string name="personalEmail">r.halgravez@gmail.com</string>
 </resources>
