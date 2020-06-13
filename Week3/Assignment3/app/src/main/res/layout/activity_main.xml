@@ -36,8 +36,6 @@
         app:layout_constraintStart_toEndOf="@id/mailImageView"
         app:layout_constraintTop_toTopOf="@id/mailImageView" />
 
-
-
     <ImageView
         android:id="@+id/twitterImageView"
         android:layout_width="60dp"
@@ -47,6 +45,16 @@
         app:layout_constraintEnd_toStartOf="@id/verticalGuideline"
         app:srcCompat="@drawable/twitter"
         android:contentDescription="@string/twitterImageDescription"/>
+
+    <TextView
+        android:id="@+id/twitterTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="@string/personalTwitter"
+        app:layout_constraintBottom_toBottomOf="@id/twitterImageView"
+        app:layout_constraintStart_toEndOf="@id/twitterImageView"
+        app:layout_constraintTop_toTopOf="@id/twitterImageView" />
 
     <ImageView
         android:id="@+id/githubImageView"

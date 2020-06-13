@@ -8,4 +8,5 @@
     <string name="gitHubImageDescription">GitHub</string>
     <string name="personalName">Roberto Halgravez</string>
     <string name="personalEmail">r.halgravez@gmail.com</string>
+    <string name="personalTwitter">\@RHalgravez</string>
 </resources>
