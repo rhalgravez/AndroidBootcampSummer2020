@@ -9,4 +9,5 @@
     <string name="personalName">Roberto Halgravez</string>
     <string name="personalEmail">r.halgravez@gmail.com</string>
     <string name="personalTwitter">\@RHalgravez</string>
+    <string name="personalGithub">rhalgravez</string>
 </resources>

@@ -66,6 +66,16 @@
         app:srcCompat="@drawable/github"
         android:contentDescription="@string/gitHubImageDescription"/>
 
+    <TextView
+        android:id="@+id/githubTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="@string/personalGithub"
+        app:layout_constraintBottom_toBottomOf="@id/githubImageView"
+        app:layout_constraintStart_toEndOf="@id/githubImageView"
+        app:layout_constraintTop_toTopOf="@id/githubImageView" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontalGuideline"
         android:layout_width="wrap_content"
