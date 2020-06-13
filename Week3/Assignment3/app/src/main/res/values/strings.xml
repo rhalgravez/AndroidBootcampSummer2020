@@ -6,4 +6,5 @@
     <string name="mailImageDescription">Mail</string>
     <string name="twitterImageDescription">Twitter</string>
     <string name="gitHubImageDescription">GitHub</string>
+    <string name="personalName">Roberto Halgravez</string>
 </resources>
