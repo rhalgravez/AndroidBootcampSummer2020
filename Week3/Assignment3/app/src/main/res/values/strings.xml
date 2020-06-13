@@ -3,4 +3,7 @@
     <string name="aboutMenu">About</string>
     <string name="alertDialogTitle">Business Card %1$s</string>
     <string name="alertDialogMessage">Created by Roberto Halgravez in RayWenderlich Android Bootcamp 2020.</string>
+    <string name="mailImageDescription">Mail</string>
+    <string name="twitterImageDescription">Twitter</string>
+    <string name="gitHubImageDescription">GitHub</string>
 </resources>

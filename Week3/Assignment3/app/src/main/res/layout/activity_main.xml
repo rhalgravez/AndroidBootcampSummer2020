@@ -13,7 +13,8 @@
         app:layout_constraintTop_toBottomOf="@id/horizontalGuideline"
         app:layout_constraintBottom_toTopOf="@id/twitterImageView"
         app:layout_constraintEnd_toStartOf="@id/verticalGuideline"
-        app:srcCompat="@drawable/mail" />
+        app:srcCompat="@drawable/mail"
+        android:contentDescription="@string/mailImageDescription"/>
 
     <ImageView
         android:id="@+id/twitterImageView"
@@ -22,7 +23,8 @@
         app:layout_constraintTop_toBottomOf="@id/mailImageView"
         app:layout_constraintBottom_toTopOf="@id/githubImageView"
         app:layout_constraintEnd_toStartOf="@id/verticalGuideline"
-        app:srcCompat="@drawable/twitter" />
+        app:srcCompat="@drawable/twitter"
+        android:contentDescription="@string/twitterImageDescription"/>
 
     <ImageView
         android:id="@+id/githubImageView"
@@ -31,7 +33,8 @@
         app:layout_constraintTop_toBottomOf="@id/twitterImageView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/verticalGuideline"
-        app:srcCompat="@drawable/github" />
+        app:srcCompat="@drawable/github"
+        android:contentDescription="@string/gitHubImageDescription"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontalGuideline"
