@@ -23,17 +23,17 @@
         app:layout_constraintBottom_toTopOf="@id/horizontalGuideline"
         app:layout_constraintEnd_toEndOf="@id/verticalGuideline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/imageQuoteDescription" />
 
     <TextView
         android:id="@+id/quoteTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         tools:text="&quot;Here is where the quote goes&quot;"
-        android:textSize="34dp"
+        android:textSize="34sp"
         android:maxLines="6"
         android:textColor="@color/colorTextQuote"
-        android:paddingStart="@dimen/padding_half"
         android:paddingHorizontal="@dimen/padding_half"
         app:layout_constraintBottom_toBottomOf="@id/horizontalGuideline"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,7 +48,8 @@
         android:layout_margin="@dimen/padding_half"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/horizontalGuideline"
-        android:background="@drawable/custom_button"/>
+        android:background="@drawable/custom_button"
+        android:contentDescription="@string/quoteButtonDescription" />
 
     <View
         android:layout_width="0dp"
