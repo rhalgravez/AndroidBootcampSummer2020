@@ -7,11 +7,9 @@
     tools:context=".MainActivity">
 
     <TextView
+        style="@style/customTextView"
         android:id="@+id/nameTextView"
         android:text="@string/personalName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingStart="8dp"
         android:textSize="22sp"
         app:layout_constraintTop_toBottomOf="@id/horizontalGuideline"
         app:layout_constraintStart_toEndOf="@id/verticalGuideline"
@@ -28,10 +26,8 @@
         app:srcCompat="@drawable/mail" />
 
     <TextView
+        style="@style/customTextView"
         android:id="@+id/mailTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingStart="8dp"
         android:textSize="18sp"
         android:text="@string/personalEmail"
         app:layout_constraintBottom_toBottomOf="@id/mailImageView"
@@ -49,10 +45,8 @@
         android:contentDescription="@string/twitterImageDescription"/>
 
     <TextView
+        style="@style/customTextView"
         android:id="@+id/twitterTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingStart="8dp"
         android:textSize="18sp"
         android:text="@string/personalTwitter"
         app:layout_constraintBottom_toBottomOf="@id/twitterImageView"
@@ -70,10 +64,8 @@
         android:contentDescription="@string/gitHubImageDescription"/>
 
     <TextView
+        style="@style/customTextView"
         android:id="@+id/githubTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingStart="8dp"
         android:textSize="18sp"
         android:text="@string/personalGithub"
         app:layout_constraintBottom_toBottomOf="@id/githubImageView"
