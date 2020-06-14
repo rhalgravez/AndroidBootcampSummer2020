@@ -32,7 +32,7 @@
         tools:text="&quot;Here is where the quote goes&quot;"
         android:textSize="34dp"
         android:maxLines="6"
-        android:textColor="#000000"
+        android:textColor="@color/colorTextQuote"
         android:paddingStart="@dimen/padding_half"
         android:paddingHorizontal="@dimen/padding_half"
         app:layout_constraintBottom_toBottomOf="@id/horizontalGuideline"
