@@ -41,12 +41,13 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <ImageButton
+        android:id="@+id/quoteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/reload"
         android:layout_margin="@dimen/padding_half"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/quoteTextView"
+        app:layout_constraintBottom_toTopOf="@id/horizontalGuideline"
         android:background="@drawable/custom_button"/>
 
     <View

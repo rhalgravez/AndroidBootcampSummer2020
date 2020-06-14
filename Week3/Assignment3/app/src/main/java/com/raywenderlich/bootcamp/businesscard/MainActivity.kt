@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
 
     val quotes = listOf<Pair<Int, String>>(
         Pair(R.drawable.homer, "You\'ll have to speak up, I'm wearing a towel."),
-        Pair(R.drawable.shinji,"Pilot the eva Shinji or Rei will have to do it again"),
+        Pair(R.drawable.shinji,"Pilot the eva Shinji or Rei will have to do it again."),
         Pair(R.drawable.daffy,"Duck season! FIRE!"),
         Pair(R.drawable.iron_giant,"Superman!!!")
     )
@@ -22,6 +22,9 @@ class MainActivity : AppCompatActivity() {
 
         randomQuote()
 
+        quoteButton.setOnClickListener { view ->
+            randomQuote()
+        }
     }
 
     private fun randomQuote() {
