@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AlertDialog
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -23,6 +24,8 @@ class MainActivity : AppCompatActivity() {
         randomQuote()
 
         quoteButton.setOnClickListener { view ->
+            val bounceAnimation = AnimationUtils.loadAnimation(this, R.anim.bounce)
+            view.startAnimation(bounceAnimation)
             randomQuote()
         }
     }
