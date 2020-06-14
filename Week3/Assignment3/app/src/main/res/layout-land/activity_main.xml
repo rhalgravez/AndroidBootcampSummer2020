@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <View
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:background="@color/colorBackground"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintBottom_toBottomOf="@id/horizontalGuideline"/>
+
+    <ImageView
+        android:id="@+id/quoteImageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@id/horizontalGuideline"
+        app:layout_constraintEnd_toEndOf="@id/verticalGuideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/imageQuoteDescription" />
+
+    <TextView
+        android:id="@+id/quoteTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:text="&quot;Here is where the quote goes&quot;"
+        android:textSize="34sp"
+        android:maxLines="6"
+        android:textColor="@color/colorTextQuote"
+        android:paddingHorizontal="@dimen/padding_half"
+        app:layout_constraintBottom_toBottomOf="@id/horizontalGuideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/verticalGuideline"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageButton
+        android:id="@+id/quoteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/reload"
+        android:layout_margin="@dimen/padding_half"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/horizontalGuideline"
+        android:background="@drawable/custom_button"
+        android:contentDescription="@string/quoteButtonDescription" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/colorFooter"
+        app:layout_constraintTop_toTopOf="@id/horizontalGuideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        style="@style/customTextView"
+        android:id="@+id/nameTextView"
+        android:text="@string/personalName"
+        android:textSize="22sp"
+        app:layout_constraintTop_toBottomOf="@id/horizontalGuideline"
+        app:layout_constraintStart_toEndOf="@id/verticalGuideline"
+        app:layout_constraintBottom_toTopOf="@id/mailImageView" />
+
+    <ImageView
+        android:id="@+id/mailImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/mailImageDescription"
+        app:layout_constraintBottom_toTopOf="@id/twitterImageView"
+        app:layout_constraintEnd_toStartOf="@id/verticalGuideline"
+        app:layout_constraintTop_toBottomOf="@id/nameTextView"
+        app:srcCompat="@drawable/mail" />
+
+    <TextView
+        style="@style/customTextView"
+        android:id="@+id/mailTextView"
+        android:textSize="@dimen/textSize"
+        android:text="@string/personalEmail"
+        app:layout_constraintBottom_toBottomOf="@id/mailImageView"
+        app:layout_constraintStart_toEndOf="@id/mailImageView"
+        app:layout_constraintTop_toTopOf="@id/mailImageView" />
+
+    <ImageView
+        android:id="@+id/twitterImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/mailImageView"
+        app:layout_constraintBottom_toTopOf="@id/githubImageView"
+        app:layout_constraintEnd_toStartOf="@id/verticalGuideline"
+        app:srcCompat="@drawable/twitter"
+        android:contentDescription="@string/twitterImageDescription"/>
+
+    <TextView
+        style="@style/customTextView"
+        android:id="@+id/twitterTextView"
+        android:textSize="@dimen/textSize"
+        android:text="@string/personalTwitter"
+        app:layout_constraintBottom_toBottomOf="@id/twitterImageView"
+        app:layout_constraintStart_toEndOf="@id/twitterImageView"
+        app:layout_constraintTop_toTopOf="@id/twitterImageView" />
+
+    <ImageView
+        android:id="@+id/githubImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/twitterImageView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/verticalGuideline"
+        app:srcCompat="@drawable/github"
+        android:contentDescription="@string/gitHubImageDescription"/>
+
+    <TextView
+        style="@style/customTextView"
+        android:id="@+id/githubTextView"
+        android:textSize="@dimen/textSize"
+        android:text="@string/personalGithub"
+        app:layout_constraintBottom_toBottomOf="@id/githubImageView"
+        app:layout_constraintStart_toEndOf="@id/githubImageView"
+        app:layout_constraintTop_toTopOf="@id/githubImageView" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontalGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".65" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/verticalGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".35" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
