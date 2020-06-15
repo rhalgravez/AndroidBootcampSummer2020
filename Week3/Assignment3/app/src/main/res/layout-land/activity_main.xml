@@ -80,7 +80,6 @@
     <TextView
         style="@style/customTextView"
         android:id="@+id/mailTextView"
-        android:textSize="@dimen/textSize"
         android:text="@string/personalEmail"
         app:layout_constraintBottom_toBottomOf="@id/mailImageView"
         app:layout_constraintStart_toEndOf="@id/mailImageView"
@@ -99,7 +98,6 @@
     <TextView
         style="@style/customTextView"
         android:id="@+id/twitterTextView"
-        android:textSize="@dimen/textSize"
         android:text="@string/personalTwitter"
         app:layout_constraintBottom_toBottomOf="@id/twitterImageView"
         app:layout_constraintStart_toEndOf="@id/twitterImageView"
@@ -119,7 +117,6 @@
     <TextView
         style="@style/customTextView"
         android:id="@+id/githubTextView"
-        android:textSize="@dimen/textSize"
         android:text="@string/personalGithub"
         app:layout_constraintBottom_toBottomOf="@id/githubImageView"
         app:layout_constraintStart_toEndOf="@id/githubImageView"
