@@ -10,10 +10,13 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    //region Constants
     companion object {
         private const val QUOTE_INDEX_KEY = "QUOTE_INDEX_KEY"
     }
+    //endregion
 
+    //region Properties
     private val quotes = listOf(
         Pair(R.drawable.homer, "You\'ll have to speak up, I'm wearing a towel."),
         Pair(R.drawable.shinji,"Pilot the eva Shinji or Rei will have to do it again."),
@@ -22,7 +25,9 @@ class MainActivity : AppCompatActivity() {
     )
 
     private var currentImageAndQuoteIndex = 0
+    //endregion
 
+    //region Lifecycle
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -45,8 +50,9 @@ class MainActivity : AppCompatActivity() {
         super.onSaveInstanceState(outState)
         outState.putInt(QUOTE_INDEX_KEY, currentImageAndQuoteIndex)
     }
+    //endregion
 
-
+    //region Helper methods
     /**
      * Select an element from [quotes] list property according to the index parameter
      * and show the element in the activity.
@@ -60,6 +66,7 @@ class MainActivity : AppCompatActivity() {
         quoteImageView.setImageResource(image)
         quoteTextView.text = quote
     }
+    //endregion
 
     //region Menu
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
