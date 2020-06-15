@@ -26,14 +26,14 @@ class MainActivity : AppCompatActivity() {
         quoteButton.setOnClickListener { view ->
             val bounceAnimation = AnimationUtils.loadAnimation(this, R.anim.bounce)
             view.startAnimation(bounceAnimation)
-            randomQuote()
+            selectQuote()
         }
     }
 
-    private fun randomQuote() {
-        val (image, randomQuote) = quotes.random()
+    private fun selectQuote(index: Int? = null) {
+        val (image, quote) = quotes[index ?: quotes.indices.random()]
         quoteImageView.setImageResource(image)
-        quoteTextView.text = randomQuote
+        quoteTextView.text = quote
     }
 
     //region Menu
