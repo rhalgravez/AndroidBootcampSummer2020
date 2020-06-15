@@ -103,9 +103,8 @@
         style="@style/customTextView"
         android:id="@+id/twitterTextView"
         android:text="@string/personalTwitter"
-        app:layout_constraintBottom_toBottomOf="@id/twitterImageView"
-        app:layout_constraintStart_toEndOf="@id/twitterImageView"
-        app:layout_constraintTop_toTopOf="@id/twitterImageView" />
+        android:lines="1"
+        />
 
     <ImageView
         android:id="@+id/githubImageView"
