@@ -46,6 +46,14 @@ class MainActivity : AppCompatActivity() {
         outState.putInt(QUOTE_INDEX_KEY, currentImageAndQuoteIndex)
     }
 
+
+    /**
+     * Select an element from [quotes] list property according to the index parameter
+     * and show the element in the activity.
+     * If index is null, selects a random element.
+     *
+     * @param index The index to select from [quotes] list property. This value may be null.
+     */
     private fun selectQuote(index: Int? = null) {
         currentImageAndQuoteIndex = index ?: quotes.indices.random()
         val (image, quote) = quotes[currentImageAndQuoteIndex]
