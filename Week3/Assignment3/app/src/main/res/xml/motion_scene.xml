@@ -3,19 +3,41 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ConstraintSet android:id="@+id/mailTextViewStart">
-        <Constraint/>
-
+        <Constraint
+            android:id="@+id/mailTextView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@id/mailImageView"
+            app:layout_constraintEnd_toStartOf="@id/verticalGuideline"
+            app:layout_constraintStart_toEndOf="@id/verticalGuideline"
+            app:layout_constraintTop_toTopOf="@id/mailImageView" />
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/mailTextViewEnd">
-        <Constraint/>
-
+        <Constraint
+            android:id="@+id/mailTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/mailImageView"
+            app:layout_constraintStart_toEndOf="@id/mailImageView"
+            app:layout_constraintTop_toTopOf="@id/mailImageView" />
     </ConstraintSet>
 
     <Transition
         app:constraintSetStart="@id/mailTextViewStart"
         app:constraintSetEnd="@id/mailTextViewEnd"
         app:duration="180">
+        <OnClick
+            app:clickAction="toggle"
+            app:targetId="@+id/mailImageView" />
+        <KeyFrameSet>
+            <KeyPosition
+                app:framePosition="05"
+                app:keyPositionType="deltaRelative"
+                app:motionTarget="@id/mailTextView"
+                app:percentHeight="0.05"
+                app:percentWidth="0.05" />
+        </KeyFrameSet>
     </Transition>
 
 </MotionScene>

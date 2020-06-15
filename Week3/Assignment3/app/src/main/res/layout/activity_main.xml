@@ -86,9 +86,8 @@
         style="@style/customTextView"
         android:id="@+id/mailTextView"
         android:text="@string/personalEmail"
-        app:layout_constraintBottom_toBottomOf="@id/mailImageView"
-        app:layout_constraintStart_toEndOf="@id/mailImageView"
-        app:layout_constraintTop_toTopOf="@id/mailImageView" />
+        android:lines="1"
+        />
 
     <ImageView
         android:id="@+id/twitterImageView"
