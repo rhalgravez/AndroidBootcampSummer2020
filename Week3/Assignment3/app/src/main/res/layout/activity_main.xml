@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:layoutDescription="@xml/motion_scene"
     tools:context=".MainActivity">
 
     <View
+        android:id="@+id/backgroundView"
     android:layout_width="0dp"
     android:layout_height="0dp"
     android:background="@color/colorBackground"
@@ -52,6 +54,7 @@
         android:contentDescription="@string/quoteButtonDescription" />
 
     <View
+        android:id="@+id/footerBackgroundView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/colorFooter"
