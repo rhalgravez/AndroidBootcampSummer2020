@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Business Card</string>
+    <string name="aboutMenu">About</string>
+    <string name="alertDialogTitle">Business Card %1$s</string>
+    <string name="alertDialogMessage">Created by Roberto Halgravez in RayWenderlich Android Bootcamp 2020.</string>
+    <string name="mailImageDescription">Mail</string>
+    <string name="twitterImageDescription">Twitter</string>
+    <string name="gitHubImageDescription">GitHub</string>
+    <string name="personalName">Roberto Halgravez</string>
+    <string name="personalEmail">r.halgravez@gmail.com</string>
+    <string name="personalTwitter">\@RHalgravez</string>
+    <string name="personalGithub">rhalgravez</string>
+    <string name="imageQuoteDescription">Image related to the quote</string>
+    <string name="quoteButtonDescription">Button to load another quote</string>
+</resources>
