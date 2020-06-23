@@ -9,4 +9,23 @@
     android:padding="8dp"
     >
 
+    <ImageView
+        android:id="@+id/movie_image_view"
+        android:layout_width="@dimen/movie_poster_width"
+        android:layout_height="@dimen/movie_poster_height"
+        android:contentDescription="@string/imageView_description"
+        app:srcCompat="@drawable/la_la_land" />
+    <TextView
+        android:id="@+id/title_movie_text_view"
+        style="@style/customTextView"
+        tools:text="Movie name"
+        android:layout_gravity="bottom|start"
+        />
+    <TextView
+        android:id="@+id/rating_movie_text_view"
+        style="@style/customTextView"
+        tools:text="Rating"
+        android:layout_gravity="bottom|end"
+        />
+
 </FrameLayout>

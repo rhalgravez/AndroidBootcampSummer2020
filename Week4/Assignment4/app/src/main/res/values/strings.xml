@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">BlockbusterRecyclerView</string>
+    <string name="imageView_description">Movie poster</string>
 </resources>
