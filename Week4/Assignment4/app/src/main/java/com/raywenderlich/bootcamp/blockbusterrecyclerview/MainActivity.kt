@@ -11,5 +11,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         recycler_view.layoutManager = GridLayoutManager(this, 2)
+        recycler_view.adapter = MoviesListAdapter()
     }
 }
