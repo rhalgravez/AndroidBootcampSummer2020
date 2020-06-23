@@ -7,7 +7,6 @@ class Movie(
     val title: String,
     val releaseDate: String,
     val poster: Int,
-    val banner: Int,
     val rating: String,
     val summary: String
 ) {
