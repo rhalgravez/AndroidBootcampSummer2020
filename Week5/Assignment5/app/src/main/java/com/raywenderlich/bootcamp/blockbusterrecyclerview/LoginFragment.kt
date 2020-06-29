@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.fragment_login.*
 class LoginFragment : Fragment() {
 
     public  interface  LoginFragmentListener {
-        fun hasLoggedIn(value: Boolean)
+        fun hasLoggedIn()
     }
 
     private lateinit var listener: LoginFragmentListener
@@ -48,7 +48,7 @@ class LoginFragment : Fragment() {
 
         button.setOnClickListener {
             if (editTextUsername.text.length >= 3 && editTextPassword.text.length >= 4) {
-                listener.hasLoggedIn(true)
+                listener.hasLoggedIn()
             } else {
                 showError()
             }

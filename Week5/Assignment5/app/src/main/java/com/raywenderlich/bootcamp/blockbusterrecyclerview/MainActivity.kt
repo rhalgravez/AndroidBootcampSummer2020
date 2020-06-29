@@ -23,8 +23,8 @@ class MainActivity : AppCompatActivity(), LoginFragment.LoginFragmentListener, M
         showFragment(logInValue)
     }
 
-    override fun hasLoggedIn(value: Boolean) {
-        showFragment(value)
+    override fun hasLoggedIn() {
+        showFragment(true)
     }
 
     override fun hasLoggedOut() {
