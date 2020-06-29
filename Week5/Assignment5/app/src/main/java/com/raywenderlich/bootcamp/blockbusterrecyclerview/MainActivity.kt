@@ -12,7 +12,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val mainFragment = MainFragment()
+        val loginFragment = LoginFragment()
         val fragmentManager = supportFragmentManager
-        fragmentManager.beginTransaction().add(R.id.fragment_container, mainFragment).commit()
+        fragmentManager.beginTransaction().add(R.id.fragment_container, loginFragment).commit()
     }
 }
