@@ -1,14 +1,15 @@
 package com.raywenderlich.bootcamp.blockbusterrecyclerview
 
+import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
-import com.raywenderlich.bootcamp.blockbusterrecyclerview.model.MoviesDataSource
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), LoginFragment.LoginFragmentListener {
 
-    private var loggedIn = false
+    companion object {
+        private const val LOGGED_IN_KEY = "SHARED_PREFS_LOGGED_IN"
+        private const val SHARED_PREFS_REPOSITORY = "SHARED_PREFS_REPOSITORY"
+    }
 
     private val mainFragment = MainFragment()
     private val loginFragment = LoginFragment()
@@ -18,12 +19,12 @@ class MainActivity : AppCompatActivity(), LoginFragment.LoginFragmentListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        showFragment(loggedIn)
+        val logInValue = getLogIn()
+        showFragment(logInValue)
     }
 
     override fun hasLoggedIn(value: Boolean) {
-        loggedIn = value
-        showFragment(loggedIn)
+        showFragment(value)
     }
 
     private fun showFragment(value: Boolean) {
@@ -36,7 +37,17 @@ class MainActivity : AppCompatActivity(), LoginFragment.LoginFragmentListener {
             fragmentTransaction.remove(mainFragment)
             fragmentTransaction.replace(R.id.fragment_container, loginFragment)
         }
-
+        saveLogIn(value)
         fragmentTransaction.commit()
     }
+
+    private fun sharedPrefs() = getSharedPreferences(SHARED_PREFS_REPOSITORY, Context.MODE_PRIVATE)
+
+    private fun saveLogIn(value: Boolean) {
+        val editor = sharedPrefs().edit()
+        editor.putBoolean(LOGGED_IN_KEY, value).apply()
+    }
+
+    private fun getLogIn(): Boolean = sharedPrefs().getBoolean(LOGGED_IN_KEY, false)
+
 }
