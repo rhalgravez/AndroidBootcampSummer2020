@@ -11,7 +11,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        recycler_view.layoutManager = GridLayoutManager(this, 2)
-        recycler_view.adapter = MoviesListAdapter(MoviesDataSource.getMoviesList())
+        val mainFragment = MainFragment()
+        val fragmentManager = supportFragmentManager
+        fragmentManager.beginTransaction().add(R.id.fragment_container, mainFragment).commit()
     }
 }
