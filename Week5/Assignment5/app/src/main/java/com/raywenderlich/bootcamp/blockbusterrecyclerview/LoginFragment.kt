@@ -1,5 +1,6 @@
 package com.raywenderlich.bootcamp.blockbusterrecyclerview
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -10,9 +11,23 @@ import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_login.*
 
 
-
-
 class LoginFragment : Fragment() {
+
+    public  interface  LoginFragmentListener {
+        fun hasLoggedIn(value: Boolean)
+    }
+
+    private lateinit var listener: LoginFragmentListener
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        if (context is LoginFragmentListener) {
+            listener = context as LoginFragmentListener
+        } else {
+            throw ClassCastException("$context must implement LoginFragmentListener")
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,12 +42,13 @@ class LoginFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_login, container, false)
     }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
         button.setOnClickListener {
             if (editTextUsername.text.length >= 3 && editTextPassword.text.length >= 4) {
-                Log.d("LOGIN_FRAGMENT", "The username and password is valid")
+                listener.hasLoggedIn(true)
             } else {
                 showError()
             }
