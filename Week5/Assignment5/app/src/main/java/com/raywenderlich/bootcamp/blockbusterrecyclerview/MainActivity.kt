@@ -4,7 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 
-class MainActivity : AppCompatActivity(), LoginFragment.LoginFragmentListener {
+class MainActivity : AppCompatActivity(), LoginFragment.LoginFragmentListener, MainFragment.MainFragmentListener {
 
     companion object {
         private const val LOGGED_IN_KEY = "SHARED_PREFS_LOGGED_IN"
@@ -25,6 +25,10 @@ class MainActivity : AppCompatActivity(), LoginFragment.LoginFragmentListener {
 
     override fun hasLoggedIn(value: Boolean) {
         showFragment(value)
+    }
+
+    override fun hasLoggedOut() {
+        showFragment(false)
     }
 
     private fun showFragment(value: Boolean) {
