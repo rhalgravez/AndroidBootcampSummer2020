@@ -6,14 +6,37 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.raywenderlich.bootcamp.blockbusterrecyclerview.model.MoviesDataSource
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), LoginFragment.LoginFragmentListener {
+
+    private var loggedIn = false
+
+    private val mainFragment = MainFragment()
+    private val loginFragment = LoginFragment()
+    private val fragmentManager = supportFragmentManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val mainFragment = MainFragment()
-        val loginFragment = LoginFragment()
-        val fragmentManager = supportFragmentManager
-        fragmentManager.beginTransaction().add(R.id.fragment_container, loginFragment).commit()
+        showFragment(loggedIn)
+    }
+
+    override fun hasLoggedIn(value: Boolean) {
+        loggedIn = value
+        showFragment(loggedIn)
+    }
+
+    private fun showFragment(value: Boolean) {
+        val fragmentTransaction = fragmentManager.beginTransaction()
+
+        if (value == true) {
+            fragmentTransaction.remove(loginFragment)
+            fragmentTransaction.replace(R.id.fragment_container, mainFragment)
+        } else {
+            fragmentTransaction.remove(mainFragment)
+            fragmentTransaction.replace(R.id.fragment_container, loginFragment)
+        }
+
+        fragmentTransaction.commit()
     }
 }
