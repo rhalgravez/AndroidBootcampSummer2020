@@ -1,5 +1,6 @@
 package com.raywenderlich.bootcamp.blockbusterrecyclerview
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -10,10 +11,26 @@ import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainFragment : Fragment() {
 
+    public  interface  MainFragmentListener {
+        fun hasLoggedOut()
+    }
+
+    private lateinit var listener: MainFragmentListener
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
 
+        }
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        if (context is LoginFragment.LoginFragmentListener) {
+            listener = context as MainFragment.MainFragmentListener
+        } else {
+            throw ClassCastException("$context must implement MainFragmentListener")
         }
     }
 
@@ -40,7 +57,7 @@ class MainFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.log_out) {
-            Log.d("MAIN_FRAGMENT", "Do teh log out")
+            listener.hasLoggedOut()
         }
         return true
 
