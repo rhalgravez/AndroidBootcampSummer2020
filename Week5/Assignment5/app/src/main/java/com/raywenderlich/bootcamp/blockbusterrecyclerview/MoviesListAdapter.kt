@@ -5,7 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.raywenderlich.bootcamp.blockbusterrecyclerview.model.Movie
 
-class MoviesListAdapter(private val moviesList: ArrayList<Movie>): RecyclerView.Adapter<MoviesListItemViewHolder>() {
+class MoviesListAdapter(private val moviesList: ArrayList<Movie>, val clickListener: MoviesListClickListener): RecyclerView.Adapter<MoviesListItemViewHolder>() {
+
+    interface MoviesListClickListener {
+        fun listItemClicked(movie: Movie)
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesListItemViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.movies_list_item_viewholder, parent, false)
@@ -20,5 +25,9 @@ class MoviesListAdapter(private val moviesList: ArrayList<Movie>): RecyclerView.
         holder.movieImageView.setImageResource(movie.poster)
         holder.movieTitleTextView.text = movie.title
         holder.movieRatingTextView.text = "${movie.rating} / 10"
+
+        holder.itemView.setOnClickListener {
+            clickListener.listItemClicked(movie)
+        }
     }
 }
