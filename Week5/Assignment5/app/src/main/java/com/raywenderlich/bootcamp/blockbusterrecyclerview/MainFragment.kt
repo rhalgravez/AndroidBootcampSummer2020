@@ -1,15 +1,17 @@
 package com.raywenderlich.bootcamp.blockbusterrecyclerview
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import com.raywenderlich.bootcamp.blockbusterrecyclerview.model.Movie
 import com.raywenderlich.bootcamp.blockbusterrecyclerview.model.MoviesDataSource
 import kotlinx.android.synthetic.main.fragment_main.*
 
-class MainFragment : Fragment() {
+class MainFragment : Fragment(), MoviesListAdapter.MoviesListClickListener {
 
     public  interface  MainFragmentListener {
         fun hasLoggedOut()
@@ -46,7 +48,7 @@ class MainFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         recycler_view.layoutManager = GridLayoutManager(activity, 2)
-        recycler_view.adapter = MoviesListAdapter(MoviesDataSource.getMoviesList())
+        recycler_view.adapter = MoviesListAdapter(MoviesDataSource.getMoviesList(), this)
 
     }
 
@@ -61,6 +63,11 @@ class MainFragment : Fragment() {
         }
         return true
 
+    }
+
+    override fun listItemClicked(movie: Movie) {
+        val detail = Intent(activity, DetailActivity::class.java)
+        startActivity(detail)
     }
 
 }
