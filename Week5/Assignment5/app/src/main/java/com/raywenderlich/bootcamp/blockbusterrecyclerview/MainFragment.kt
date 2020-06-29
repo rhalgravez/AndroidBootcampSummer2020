@@ -13,6 +13,10 @@ import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainFragment : Fragment(), MoviesListAdapter.MoviesListClickListener {
 
+    companion object {
+        const val INTENT_MOVIE_KEY = "movie"
+    }
+
     public  interface  MainFragmentListener {
         fun hasLoggedOut()
     }
@@ -67,6 +71,7 @@ class MainFragment : Fragment(), MoviesListAdapter.MoviesListClickListener {
 
     override fun listItemClicked(movie: Movie) {
         val detail = Intent(activity, DetailActivity::class.java)
+        detail.putExtra(INTENT_MOVIE_KEY, movie)
         startActivity(detail)
     }
 
