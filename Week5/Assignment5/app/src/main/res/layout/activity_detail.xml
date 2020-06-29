@@ -6,4 +6,58 @@
     android:layout_height="match_parent"
     tools:context=".DetailActivity">
 
+    <ImageView
+        android:id="@+id/movie_imageView"
+        android:layout_width="@dimen/movie_poster_width"
+        android:layout_height="@dimen/movie_poster_height"
+        android:layout_marginStart="@dimen/padding"
+        android:layout_marginTop="@dimen/padding"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/imageView_description"
+        tools:srcCompat="@drawable/her"
+        />
+
+    <TextView
+        android:id="@+id/title_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="The Dark Knight"
+        android:layout_marginStart="@dimen/padding"
+        app:layout_constraintStart_toEndOf="@id/movie_imageView"
+        app:layout_constraintTop_toTopOf="@id/movie_imageView" />
+
+    <TextView
+        android:id="@+id/releaseDate_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding"
+        android:layout_marginStart="@dimen/padding"
+        tools:text="July 14, 2008"
+        app:layout_constraintStart_toEndOf="@+id/movie_imageView"
+        app:layout_constraintTop_toBottomOf="@+id/title_textView" />
+
+    <TextView
+        android:id="@+id/rating_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding"
+        android:layout_marginStart="@dimen/padding"
+        tools:text="9 / 10"
+        app:layout_constraintStart_toEndOf="@+id/movie_imageView"
+        app:layout_constraintTop_toBottomOf="@+id/releaseDate_textView" />
+
+    <TextView
+        android:id="@+id/summary_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding"
+        android:paddingStart="@dimen/padding"
+        android:paddingEnd="@dimen/padding"
+        tools:text="When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice."
+        app:layout_constraintTop_toBottomOf="@+id/movie_imageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
