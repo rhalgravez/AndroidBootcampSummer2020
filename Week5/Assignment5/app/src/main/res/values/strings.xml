@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">BlockbusterRecyclerView</string>
+    <string name="imageView_description">Movie poster</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="log_out">Log out</string>
+    <string name="add_to_favorites_message">Movie was added in favorites</string>
+    <string name="remove_from_favorites_message">Movie was removed from favorites</string>
+</resources>
